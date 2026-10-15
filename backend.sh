@@ -50,3 +50,33 @@ then
     VALIDATE $? "expence user creation"
 fi
 
+curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-92s/expense-documentation/refs/heads/main/artifacts/expense-backend-v5.tar.gz &>>$LOG_FILE
+VALIDATE $? "download the backend code"
+
+cd /app
+tar -xzf /tmp/backend.tar.gz 
+VALIDATE $? "extracting backend code"
+
+cd /app
+npm install
+VALIDATE $? "npm instalation"
+
+cp /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service
+VALIDATE $? "copy service"
+
+dnf install mysql -y &>>$LOG_FILE
+VALIDATE $? "mysql client instalation"
+
+mysql -h <MYSQL-SERVER-IPADDRESS> -u root -pExpenseApp@1 < /app/schema/backend.sql
+VALIDATE $? "loading schema"
+
+systemctl daemon-reload
+VALIDATE $? "daemon reload"
+
+systemctl enable backend
+VALIDATE $? "enabled backend"
+
+systemctl start backend
+VALIDATE $?  "start backend"
+
+
