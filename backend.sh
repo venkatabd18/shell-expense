@@ -58,7 +58,7 @@ tar -xzf /tmp/backend.tar.gz &>>$LOG_FILE
 VALIDATE $? "extracting backend code"
 
 cd /app
-npm install
+npm install &>>$LOG_FILE
 VALIDATE $? "npm instalation"
 
 cp /home/ec2-user/shell-expense/backend.service /etc/systemd/system/backend.service
