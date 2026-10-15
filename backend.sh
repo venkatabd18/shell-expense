@@ -40,4 +40,13 @@ node -v | tee -a $LOG_FILE
 VALIDATE $? "Verify nodejs"
 
 mkdir -p /app
+VALIDATE $? "app dir creation"
+
+id expense
+if [ $? -ne 0 ]
+then
+    echo "expense user not availble. creating"
+    useradd expense
+    VALIDATE $? "expence user creation"
+fi
 
