@@ -45,7 +45,4 @@ then
     echo "root password not set. setting up"
     mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? "Setting up root password"
-else
-    echo "root password already set up"
-    exit 1
 fi
