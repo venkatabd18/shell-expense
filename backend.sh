@@ -67,7 +67,7 @@ VALIDATE $? "copy service"
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "mysql client instalation"
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -u root -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h mysql.venra.online -u root -pExpenseApp@1 < /app/schema/backend.sql
 VALIDATE $? "loading schema"
 
 systemctl daemon-reload
