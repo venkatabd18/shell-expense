@@ -54,7 +54,7 @@ curl -o /tmp/backend.tar.gz https://raw.githubusercontent.com/daws-92s/expense-d
 VALIDATE $? "download the backend code"
 
 cd /app
-tar -xzf /tmp/backend.tar.gz 
+tar -xzf /tmp/backend.tar.gz &>>$LOG_FILE 
 VALIDATE $? "extracting backend code"
 
 cd /app

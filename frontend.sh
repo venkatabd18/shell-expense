@@ -35,3 +35,21 @@ VALIDATE $? "enabled nginx"
 
 systemctl start nginx
 VALIDATE $? "start nginx"
+
+rm -rf /usr/share/nginx/html/*
+
+curl -o /tmp/frontend.tar.gz https://raw.githubusercontent.com/daws-92s/expense-documentation/refs/heads/main/artifacts/expense-frontend-v5.tar.gz &>>$LOG_FILE
+VALIDATE $? "downloading frontend code"
+
+cd /usr/share/nginx/html
+tar -xzf /tmp/frontend.tar.gz &>>$LOG_FILE
+VALIDATE $? "extracting code"
+
+cp /home/ec2-user/shell-expense/expense.conf /etc/nginx/default.d/expense.conf
+VALIDATE $? "Copy expence conf"
+
+nginx -t
+VALIDATE $? "nginx conf test"
+
+systemctl restart nginx
+VALIDATE $? "restart nginx"
