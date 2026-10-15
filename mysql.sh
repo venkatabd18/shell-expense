@@ -26,12 +26,13 @@ then
     else
         echo "Mysql installation success"
     fi
-    systemctl enable mysqld
-    systemctl start mysqld
 else
     echo Mysql server already installed.. nothing to do
     exit 1
 fi 
+
+systemctl enable mysqld
+systemctl start mysqld
 
 mysql -h mysql.venra.online -u root -pExpenseApp@1 -e 'show databases';
 if [ $? -ne 0 ]
