@@ -45,7 +45,7 @@ VALIDATE $? "app dir creation"
 id expense
 if [ $? -ne 0 ]
 then
-    echo "expense user not availble. creating"
+    echo "expense user not availble. creating" &>>$LOG_FILE
     useradd expense
     VALIDATE $? "expence user creation"
 fi
