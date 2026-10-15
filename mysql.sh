@@ -13,3 +13,12 @@ then
 fi
 
 echo -e "$Y Script start time : $TIME_STAMP $N"
+
+dnf list installed mysql
+if [ $? -ne 0 ]
+then
+    echo "Mysql server not installed, going to install"
+else
+    echo Mysql server already installed.. nothing to do
+    exit 1
+fi 
