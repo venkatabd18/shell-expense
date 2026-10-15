@@ -27,7 +27,7 @@ VALIDATE(){
 }
 echo -e "$Y Script start time : $TIME_STAMP $N" | tee -a $LOG_FILE
 
-dnf install nginx -y &>>&LOG_FILE
+dnf install nginx -y &>>LOG_FILE
 VALIDATE $? "install nginx"
 
 systemctl enable nginx
