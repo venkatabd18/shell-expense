@@ -4,6 +4,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+TIME_STAMP=$(date +%Y-%m-%d-%H-%M-%S)
 
 if [ $USERID -ne 0 ]
 then 
@@ -11,5 +12,4 @@ then
     exit 1
 fi
 
-echo "Script start time: date "
-
+echo -e "$Y Script start time : $TIME_STAMP $N"
