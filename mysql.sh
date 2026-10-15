@@ -10,5 +10,5 @@ then
     echo -e "$Y Run the script with root access $N"
 fi
 
-echo "Script start time: $date"
+echo "Script start time: ${date}"
 
