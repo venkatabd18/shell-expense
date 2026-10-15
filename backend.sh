@@ -27,10 +27,10 @@ VALIDATE(){
 }
 echo -e "$Y Script start time : $TIME_STAMP $N" | tee -a $LOG_FILE
 
-dnf module disable nodejs -y | tee -a $LOG_FILE
+dnf module disable nodejs -y &>>$LOG_FILE
 VALIDATE $? "disabled nodejs"
 
-dnf module enable nodejs:24 -y | tee -a $LOG_FILE
+dnf module enable nodejs:24 -y &>>$LOG_FILE
 VALIDATE $? "enabled node js"
 
 dnf install nodejs -y &>>$LOG_FILE
