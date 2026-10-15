@@ -26,6 +26,8 @@ then
     else
         echo "Mysql installation success"
     fi
+    systemctl enable mysqld
+    systemctl start mysqld
 else
     echo Mysql server already installed.. nothing to do
     exit 1
