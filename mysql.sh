@@ -11,5 +11,5 @@ then
     exit 1
 fi
 
-echo "Script start time: $date"
+echo "Script start time: date "
 
