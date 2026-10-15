@@ -12,20 +12,20 @@ mkdir -p /var/log/expense
 
 if [ $USERID -ne 0 ]
 then 
-    echo -e "$Y Run the script with root access $N" | tee $LOG_FILE
+    echo -e "$Y Run the script with root access $N" | tee -a $LOG_FILE
     exit 1
 fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is $R failed $N" | tee $LOG_FILE
+        echo -e "$2 is $R failed $N" | tee -a $LOG_FILE
         exit 1
     else
-        echo -e "$2 is $G SUCCESS $N" | tee $LOG_FILE
+        echo -e "$2 is $G SUCCESS $N" | tee -a $LOG_FILE
     fi 
 }
-echo -e "$Y Script start time : $TIME_STAMP $N" | tee $LOG_FILE
+echo -e "$Y Script start time : $TIME_STAMP $N" | tee -a $LOG_FILE
 
 dnf list installed mysql
 if [ $? -ne 0 ]
