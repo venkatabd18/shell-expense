@@ -31,7 +31,6 @@ then
     VALIDATE $? "Mysql installation"
 else
     echo Mysql server already installed.. nothing to do
-    exit 1
 fi 
 
 systemctl enable mysqld
