@@ -32,3 +32,13 @@ else
     echo Mysql server already installed.. nothing to do
     exit 1
 fi 
+
+mysql -h mysql.venra.online -u root -pExpenseApp@1 -e 'show databases';
+if [ $? -ne 0 ]
+then
+    echo "root password not set. setting up"
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+else
+    echo "root password already set up"
+    exit 1
+fi
